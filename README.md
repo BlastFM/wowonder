@@ -1,4 +1,4 @@
-# wowonder
+# WoWonder
 Wowonder Meta Data
 
 `For WoWonder - The Ultimate PHP Social Network Platform`
