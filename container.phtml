@@ -1,5 +1,6 @@
 <?php
       $metaDataSent = false;
+// Function to remove cache query strings from image URL's
  function imageUrl($str) {
       $str = trim(substr($str, 0, strpos($str, '?cache')));
       return $str;
