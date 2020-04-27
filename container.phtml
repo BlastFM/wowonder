@@ -107,23 +107,22 @@ if (empty($wo['description'])) {
           echo Wo_LoadPage('header/og-meta');
           $metaDataSent = true;
       }
-      if (!empty($wo['story']['postYoutube']) && !$metaDataSent) {
+if (!empty($wo['story']['postYoutube']) && !$metaDataSent) {
           include 'header/og-meta-youtube.phtml';
           $metaDataSent = true;
-      } 
-      if (!empty($wo['story']['postSticker']) && !$metaDataSent) { 
+} 
+if (!empty($wo['story']['postSticker']) && !$metaDataSent) { 
           echo Wo_LoadPage('header/og-meta-5');
           $metaDataSent = true;
-      } 
-      if (!empty($wo['story']['postLink']) && !$metaDataSent) { 
+} 
+if (!empty($wo['story']['postLink']) && !$metaDataSent) { 
           echo Wo_LoadPage('header/og-meta-2');
           $metaDataSent = true;
-      }
-
-      if (!empty($wo['story']['product_id']) && !$metaDataSent) { 
+}
+if (!empty($wo['story']['product_id']) && !$metaDataSent) { 
           echo Wo_LoadPage('header/og-meta-4');
           $metaDataSent = true;
-      } ?>
+} ?>
       <?php if (!empty($wo['story']['fund'])) {  ?>
       <meta property="og:title" content="<?php echo $wo['story']['fund']['fund']['title']; ?>" />
       <meta property="og:type" content="funding" />
