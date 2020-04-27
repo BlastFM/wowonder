@@ -1,7 +1,7 @@
 # wowonder
 Wowonder Meta Data
 
-`For Wowonder php ultimate social media platform`
+`For WoWonder - The Ultimate PHP Social Network Platform`
 
 ## The og-meta-default.phtml file contains a direct link to our image
 `You will need to change this link to match your website needs`
