@@ -1,4 +1,4 @@
 # wowonder
 Wowonder Meta Data
 
-`For Wowonder php ultimate social media platofrm`
+`For Wowonder php ultimate social media platform`
