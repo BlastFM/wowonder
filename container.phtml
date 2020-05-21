@@ -1,209 +1,187 @@
-<?php
-      $metaDataSent = false;
-// Function to remove cache query strings from image URL's
- function imageUrl($str) {
-      $str = trim(substr($str, 0, strpos($str, '?cache')));
-      return $str;
-      exit();
-}
-if (empty($wo['keywords'])) {
-      $wo['keywords'] = $wo['config']['siteKeywords'];
-}
-if (empty($wo['description'])) {
-      $wo['description'] = $wo['config']['description'];
-}
-?>
 <!DOCTYPE html>
 <html>
    <head>
-      <title><?php echo $wo['title']; ?></title>
-      <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-      <meta name="title" content="<?php echo $wo['title']; ?>" />
-      <meta name="description" content="<?php echo $wo['description']; ?>" />
-      <meta name="keywords" content="<?php echo $wo['keywords']; ?>" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-      <meta property="fb:app_id" content="240275599745015" />
-      <meta property="fb:admins" content="100000624326156,100007652552490" />
+      <title><?php echo $wo['title'];?></title>
+      <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+      <meta name="title" content="<?php echo $wo['title'];?>">
+      <meta name="description" content="<?php echo $wo['description'];?>">
+      <meta name="keywords" content="<?php echo $wo['keywords']; ?>">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <?php if ($wo['page'] == 'maintenance') { ?>
-      <meta name="robots" content="noindex" />
-      <meta name="googlebot" content="noindex" />
+      <meta name="robots" content="noindex">
+      <meta name="googlebot" content="noindex">
       <?php } ?>
       <?php if ($wo['page'] == 'watch_movie') { ?>
       <meta property="og:title" content="<?php echo $wo['movie']['name']; ?>" />
       <meta property="og:type" content="article" />
       <meta property="og:url" content="<?php echo $wo['movie']['url']; ?>" />
       <meta property="og:image" content="<?php echo $wo['movie']['cover']; ?>" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['movie']['cover']; ?>" />
       <meta property="og:description" content="<?php echo $wo['movie']['description']; ?>" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="<?php echo $wo['movie']['name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['movie']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['movie']['cover']; ?>" />
-      <?php $metaDataSent = true; } ?>
-      <?php if ($wo['page'] == 'page' && !empty($wo['page_profile']) && !$metaDataSent) { ?>
+      <?php } ?>
+      <?php if ($wo['page'] == 'page' && !empty($wo['page_profile'])) { ?>
       <meta property="og:title" content="<?php echo $wo['page_profile']['page_name']; ?>" />
       <meta property="og:type" content="article" />
       <meta property="og:url" content="<?php echo $wo['page_profile']['url']; ?>" />
-      <meta property="og:image" content="<?php echo $wo['page_profile']['cover']; ?>" />
+      <meta property="og:image" content="<?php echo $wo['page_profile']['avatar']; ?>" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['page_profile']['avatar']; ?>" />
       <meta property="og:description" content="<?php echo $wo['page_profile']['page_description']; ?>" />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="<?php echo $wo['page_profile']['page_name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['page_profile']['page_description']; ?>" />
-      <meta name="twitter:image" content="<?php echo $wo['page_profile']['cover']; ?>" />
-      <?php $metaDataSent = true; } ?>
-      <?php if ($wo['page'] == 'group' && !empty($wo['group_profile']) && !$metaDataSent) { ?>
+      <meta name="twitter:image" content="<?php echo $wo['page_profile']['avatar']; ?>" />
+      <?php } ?>
+      <?php if ($wo['page'] == 'group' && !empty($wo['group_profile'])) { ?>
       <meta property="og:title" content="<?php echo $wo['group_profile']['group_name']; ?>" />
       <meta property="og:type" content="article" />
       <meta property="og:url" content="<?php echo $wo['group_profile']['url']; ?>" />
       <meta property="og:image" content="<?php echo $wo['group_profile']['avatar']; ?>" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['group_profile']['avatar']; ?>" />
       <meta property="og:description" content="<?php echo $wo['group_profile']['about']; ?>" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="<?php echo $wo['group_profile']['group_name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['group_profile']['about']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['group_profile']['avatar']; ?>" />
-      <?php $metaDataSent = true; } ?>
-      <?php if ($wo['page'] == 'game' && !empty($wo['game']) && !$metaDataSent) { ?>
+      <?php } ?>
+      <?php if ($wo['page'] == 'game' && !empty($wo['game'])) { ?>
       <meta property="og:title" content="<?php echo $wo['game']['game_name']; ?>" />
       <meta property="og:type" content="game" />
       <meta property="og:url" content="<?php echo $wo['game']['game_link']; ?>" />
       <meta property="og:image" content="<?php echo $wo['game']['game_avatar']; ?>" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['game']['game_avatar']; ?>" />
       <meta property="og:description" content="<?php echo $wo['game']['game_name']; ?>" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="<?php echo $wo['game']['game_name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['game']['game_name']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['game']['game_avatar']; ?>" />
-      <?php $metaDataSent = true; } ?>
-      <?php if ($wo['page'] == 'welcome' && !$metaDataSent) { ?>
-      <meta property="og:title" content="<?php echo $wo['title']; ?>" />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content="<?php echo $wo['config']['site_url']; ?>" />
-      <meta property="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
-      <meta property="og:image:secure_url" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
-      <meta property="og:description" content="<?php echo $wo['description']; ?>" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['description']; ?>" />
-      <meta name="twitter:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
-      <?php $metaDataSent = true; } ?>
-      <?php if ($wo['page'] == 'timeline' && !$metaDataSent) {
-      // Note that we use the profile cover image for Facebook and the profile avatar for Twitter ?>
-      <meta property="og:title" content="<?php echo $wo['title']; ?>" />
-      <meta property="og:description" content="<?php echo $wo['user_profile']['about']; ?>" />
-      <meta property="og:url" content="<?php echo $wo['user_profile']['url']; ?>" />
-      <meta property="og:type" content="article" />
-      <meta property="og:image" content="<?php echo imageUrl($wo['user_profile']['cover']); ?>" />
-      <meta property="og:image:alt" content="BlastFMSocialMedia - <?php echo $wo['user_profile']['username']; ?>" />
-      <meta property="og:image:width" content="918" />
-      <meta property="og:image:height" content="300" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['user_profile']['about']; ?>" />
-      <meta name="twitter:image" content="<?php echo imageUrl($wo['user_profile']['avatar']); ?>" />
-      <?php if ($wo['user_profile']['share_my_data'] == 0) { ?>
-      <meta name="robots" content="noindex,nofollow" />
-      <meta name="googlebot" content="noindex" />
       <?php } ?>
-      <?php $metaDataSent = true; } ?>
+      <?php if ($wo['page'] == 'welcome') { ?>
+      <meta property="og:title" content="<?php echo $wo['title'];?>" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="<?php echo $wo['config']['site_url'];?>" />
+      <meta property="og:image" content="<?php echo $wo['config']['theme_url'];?>/img/og.jpg" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['config']['theme_url'];?>/img/og.jpg" />
+      <meta property="og:description" content="<?php echo $wo['description'];?>" />
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="<?php echo $wo['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['description'];?>" />
+      <meta name="twitter:image" content="<?php echo $wo['config']['theme_url'];?>/img/og.jpg" />
+      <?php } ?>
       <?php 
-      if (!empty($wo['story']['postFile']) && empty($wo['page_profile']) && !$metaDataSent) { 
+      if (!empty($wo['story']['postFile'])) { 
           echo Wo_LoadPage('header/og-meta');
-          $metaDataSent = true;
-      }
-if (!empty($wo['story']['postYoutube']) && !$metaDataSent) {
-          include 'header/og-meta-youtube.phtml';
-          $metaDataSent = true;
-} 
-if (!empty($wo['story']['postSticker']) && !$metaDataSent) { 
+      } 
+      if (!empty($wo['story']['postSticker'])) { 
           echo Wo_LoadPage('header/og-meta-5');
-          $metaDataSent = true;
-} 
-if (!empty($wo['story']['postLink']) && !$metaDataSent) { 
+      } 
+      if (!empty($wo['story']['postLink'])) { 
           echo Wo_LoadPage('header/og-meta-2');
-          $metaDataSent = true;
-}
-if (!empty($wo['story']['product_id']) && !$metaDataSent) { 
+      }
+
+      if (!empty($wo['story']['product_id'])) { 
           echo Wo_LoadPage('header/og-meta-4');
-          $metaDataSent = true;
-} ?>
+          // print_r($wo['story']['product']);
+          // exit();
+      } 
+      if ($wo['page'] == 'timeline') { ?>
+      <meta property="og:type" content="article" />
+      <meta property="og:image" content="<?php echo $wo['user_profile']['avatar']?>" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['user_profile']['avatar'];?>" />
+      <meta property="og:description" content="<?php echo $wo['description'];?>" />
+      <meta property="og:title" content="<?php echo $wo['title'];?>" />
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="<?php echo $wo['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['description'];?>" />
+      <meta name="twitter:image" content="<?php echo $wo['user_profile']['avatar']; ?>" />
+      <?php if ($wo['user_profile']['share_my_data'] == 0) { ?>
+      <meta name="robots" content="noindex,nofollow">
+      <meta name="googlebot" content="noindex">
+      <?php } ?>
+      <?php } ?>
       <?php if (!empty($wo['story']['fund'])) {  ?>
-      <meta property="og:title" content="<?php echo $wo['story']['fund']['fund']['title']; ?>" />
+      <meta property="og:title" content="<?php echo $wo['story']['fund']['fund']['title'];?>" />
       <meta property="og:type" content="funding" />
-      <meta property="og:image" content="<?php echo imageUrl($wo['story']['fund']['fund']['image']); ?>" />
-      <meta property="og:description" content="<?php echo $wo['story']['fund']['fund']['description']; ?>" />    
-      <meta name="twitter:title" content="<?php echo $wo['story']['fund']['fund']['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['story']['fund']['fund']['description']; ?>" />
-      <meta name="twitter:image" content="<?php echo imageUrl($wo['story']['fund']['fund']['image']); ?>" />
-      <?php $metaDataSent = true; } ?>
+      <meta property="og:image" content="<?php echo $wo['story']['fund']['fund']['image'];?>" />
+      <meta property="og:description" content="<?php echo $wo['story']['fund']['fund']['description'];?>" />    
+      <meta name="twitter:title" content="<?php echo $wo['story']['fund']['fund']['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['story']['fund']['fund']['description'];?>" />
+      <meta name="twitter:image" content="<?php echo $wo['story']['fund']['fund']['image'];?>" />
+      <?php } ?>
       <?php if (!empty($wo['story']['fund_data'])) {  ?>
-      <meta property="og:title" content="<?php echo $wo['story']['fund_data']['title']; ?>" />
+      <meta property="og:title" content="<?php echo $wo['story']['fund_data']['title'];?>" />
       <meta property="og:type" content="funding" />
-      <meta property="og:image" content="<?php echo imageUrl($wo['story']['fund_data']['image']); ?>" />
-      <meta property="og:description" content="<?php echo $wo['story']['fund_data']['description']; ?>" />    
-      <meta name="twitter:title" content="<?php echo $wo['story']['fund_data']['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['story']['fund_data']['description']; ?>" />
-      <meta name="twitter:image" content="<?php echo imageUrl($wo['story']['fund_data']['image']); ?>" />
-      <?php $metaDataSent = true; } ?>
+      <meta property="og:image" content="<?php echo $wo['story']['fund_data']['image'];?>" />
+      <meta property="og:description" content="<?php echo $wo['story']['fund_data']['description'];?>" />    
+      <meta name="twitter:title" content="<?php echo $wo['story']['fund_data']['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['story']['fund_data']['description'];?>" />
+      <meta name="twitter:image" content="<?php echo $wo['story']['fund_data']['image'];?>" />
+      <?php } ?>
       <?php if (!empty($wo['fund'])) {  ?>
-      <meta property="og:title" content="<?php echo $wo['fund']['title']; ?>" />
+      <meta property="og:title" content="<?php echo $wo['fund']['title'];?>" />
       <meta property="og:type" content="funding" />
-      <meta property="og:image" content="<?php echo imageUrl($wo['fund']['image']); ?>" />
-      <meta property="og:description" content="<?php echo $wo['fund']['description']; ?>" />    
-      <meta name="twitter:title" content="<?php echo $wo['fund']['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['fund']['description']; ?>" />
-      <meta name="twitter:image" content="<?php echo imageUrl($wo['fund']['image']); ?>" />
-      <?php $metaDataSent = true; } ?>
+      <meta property="og:image" content="<?php echo $wo['fund']['image'];?>" />
+      <meta property="og:description" content="<?php echo $wo['fund']['description'];?>" />    
+      <meta name="twitter:title" content="<?php echo $wo['fund']['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['fund']['description'];?>" />
+      <meta name="twitter:image" content="<?php echo $wo['fund']['image'];?>" />
+      <?php } ?>
       <?php if (!empty($wo['story']['job'])) {  ?>
-      <meta property="og:title" content="<?php echo $wo['story']['job']['title']; ?>" />
+      <meta property="og:title" content="<?php echo $wo['story']['job']['title'];?>" />
       <meta property="og:type" content="job" />
-      <meta property="og:image" content="<?php echo imageUrl(Wo_GetMedia($wo['story']['job']['image'])); ?>" />
-      <meta property="og:description" content="<?php echo $wo['story']['job']['description']; ?>" />    
-      <meta name="twitter:title" content="<?php echo $wo['story']['job']['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['story']['job']['description']; ?>" />
-      <meta name="twitter:image" content="<?php echo imageUrl(Wo_GetMedia($wo['story']['job']['image'])); ?>" />
-      <?php $metaDataSent = true; } ?>
+      <meta property="og:image" content="<?php echo Wo_GetMedia($wo['story']['job']['image']);?>" />
+      <meta property="og:description" content="<?php echo $wo['story']['job']['description'];?>" />    
+      <meta name="twitter:title" content="<?php echo $wo['story']['job']['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['story']['job']['description'];?>" />
+      <meta name="twitter:image" content="<?php echo Wo_GetMedia($wo['story']['job']['image']);?>" />
+      <?php } ?>
       <?php if ($wo['page'] == 'read-blog') { ?>
       <meta property="og:type" content="article" />
-      <meta property="og:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
-      <meta property="og:image:secure_url" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
-      <meta property="og:description" content="<?php echo $wo['article']['description']; ?>" />
-      <meta property="og:title" content="<?php echo $wo['article']['title']; ?>" />
-      <meta property="og:url" content="<?php echo $wo['article']['url']; ?>" />
+      <meta property="og:image" content="<?php echo $wo['article']['thumbnail']?>" />
+      <meta property="og:image:secure_url" content="<?php echo $wo['article']['thumbnail']?>" />
+      <meta property="og:description" content="<?php echo $wo['article']['description'];?>" />
+      <meta property="og:title" content="<?php echo $wo['article']['title'];?>" />
+      <meta property="og:url" content="<?php echo $wo['article']['url'];?>" />
       <meta name="twitter:card" content="summary">
-      <meta name="twitter:title" content="<?php echo $wo['article']['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['article']['description']; ?>" />
-      <meta name="twitter:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
-      <?php $metaDataSent = true; } ?>
+      <meta name="twitter:title" content="<?php echo $wo['article']['title'];?>" />
+      <meta name="twitter:description" content="<?php echo $wo['article']['description'];?>" />
+      <meta name="twitter:image" content="<?php echo $wo['article']['thumbnail']; ?>" />
+      <?php } ?>
       <?php if (!empty($_SERVER) && !empty($_SERVER['REQUEST_URI'])) {
         $link_text = substr($wo['config']['site_url'], 0,strpos($wo['config']['site_url'], '://') + 2).parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
          ?>
          <link rel="canonical" href="<?php echo($link_text) ?>" />
       <?php } ?>
-      <?php if (!$metaDataSent) {include 'header/og-meta-default.phtml';} ?>
-      <link rel="shortcut icon" type="image/png" href="<?php echo $wo['config']['theme_url']; ?>/img/icon.png"/>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/general-style-plugins.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="shortcut icon" type="image/png" href="<?php echo $wo['config']['theme_url'];?>/img/icon.png"/>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/general-style-plugins.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php if($wo['language_type'] == 'rtl' && $wo['page'] != 'welcome') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/bootsrap-rtl.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/style_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/bootsrap-rtl.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
       <?php if ($wo['page'] == 'create_blog' || $wo['page'] == 'edit-blog') { ?>
-      <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/tinymce/js/tinymce/tinymce.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
-      <?php } ?>    
+      <script src="<?php echo $wo['config']['theme_url'];?>/javascript/tinymce/js/tinymce/tinymce.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
+      <?php } ?>
+    
       <?php if ($wo['page'] == 'welcome') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/welcome.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } else { ?>
       <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/style.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/font-awesome-4.7.0/css/font-awesome.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/font-awesome-4.7.0/css/font-awesome.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
 	  
 	  <?php if ($wo['page'] == 'messages') { ?>
 	  <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
 	  <?php } ?>
     
      <?php if ($wo['page'] == 'welcome' && $wo['language_type'] == 'rtl') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/welcome_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
 
-      <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/jquery-3.1.1.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
+      <script src="<?php echo $wo['config']['theme_url'];?>/javascript/jquery-3.1.1.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
 
       <?php //if ($wo['page'] == 'ads'): ?>
@@ -212,37 +190,37 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
       <?php //endif; ?>
 	  
 	  <?php if ($wo['page'] == 'friends_nearby'): ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/leaflet.css?version=<?php echo $wo['config']['version']; ?>">
-      <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/leaflet.js?version=<?php echo $wo['config']['version']; ?>"></script>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/leaflet.css?version=<?php echo $wo['config']['version']; ?>">
+      <script src="<?php echo $wo['config']['theme_url'];?>/javascript/leaflet.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php endif; ?>
 
       <?php if ($wo['page'] == 'forum') { ?>
-        <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/forum/script.master.js?version=<?php echo $wo['config']['version']; ?>"></script>
-        <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/forum/forum.ajax.js?version=<?php echo $wo['config']['version']; ?>"></script>
+        <script src="<?php echo $wo['config']['theme_url'];?>/javascript/forum/script.master.js?version=<?php echo $wo['config']['version']; ?>"></script>
+        <script src="<?php echo $wo['config']['theme_url'];?>/javascript/forum/forum.ajax.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
 
       <?php if ($wo['page'] == 'movies' || $wo['page'] == 'watch_movie') { ?>
-        <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/movies/style.movies.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
+        <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/movies/style.movies.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
       <?php } ?>
       
       <?php if (isset($wo['bbcodeditor']) && $wo['bbcodeditor']):?>
-      <!-- <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/bbcode/jquery.bbcode.js"></script>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/javascript/bbcode/jquery.bbcode.css" media="all"> -->
+      <!-- <script src="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.js"></script>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.css" media="all"> -->
       <?php endif ?>
       <?php if ($wo['config']['checkout_payment'] == 'yes') { ?>
         <script type="text/javascript" src="https://www.2checkout.com/checkout/api/2co.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/player/fluidplayer.min.css?version=<?php echo $wo['config']['version']; ?>" type="text/css"/>
-      <script src="<?php echo $wo['config']['theme_url']; ?>/player/fluidplayer.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/player/fluidplayer.min.css?version=<?php echo $wo['config']['version']; ?>" type="text/css"/>
+      <script src="<?php echo $wo['config']['theme_url'];?>/player/fluidplayer.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php if ($wo['loggedin'] == true && $wo['page'] == 'home' && $wo['config']['web_push'] == 1) { ?>
-      <link rel="manifest" href="<?php echo $wo['config']['theme_url']; ?>/javascript/OneSignalSDKFiles/manifest.json">
+      <link rel="manifest" href="<?php echo $wo['config']['theme_url'];?>/javascript/OneSignalSDKFiles/manifest.json">
       <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
       <script>
         var push_user_id = '';
-        var my_id = '<?php echo $wo['user']['web_device_id']; ?>';
+        var my_id = '<?php echo $wo['user']['web_device_id'] ?>';
         var OneSignal = window.OneSignal || [];
         OneSignal.push(["init", {
-          appId: "<?php echo $wo['config']['web_push_id']; ?>",
+          appId: "<?php echo $wo['config']['web_push_id'] ?>",
           autoRegister: true, /* Set to true to automatically prompt visitors */
           notifyButton: {
               enable: true /* Set to false to hide */
@@ -253,14 +231,14 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
          OneSignal.getUserId(function(userId) {
             push_user_id = userId;
             if (userId != my_id) {
-              $.get("<?php echo $wo['config']['site_url'].'/requests.php'; ?>", {f: 'update_user_device_id', id:push_user_id});
+              $.get("<?php echo $wo['config']['site_url'].'/requests.php';?>", {f: 'update_user_device_id', id:push_user_id});
             }
           });
          OneSignal.on('subscriptionChange', function (isSubscribed) {
              if (isSubscribed == false) {
-                $.get("<?php echo $wo['config']['site_url'].'/requests.php'; ?>", {f: 'remove_user_device_id'});
+                $.get("<?php echo $wo['config']['site_url'].'/requests.php';?>", {f: 'remove_user_device_id'});
              } else {
-                $.get("<?php echo $wo['config']['site_url'].'/requests.php'; ?>", {f: 'update_user_device_id', id:push_user_id});
+                $.get("<?php echo $wo['config']['site_url'].'/requests.php';?>", {f: 'update_user_device_id', id:push_user_id});
              }
          });
        });
@@ -273,14 +251,14 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
       <script type="text/javascript">
          <?php echo $wo['config']['header_cc']; ?>
          function Wo_Ajax_Requests_File(){
-            return "<?php echo $wo['config']['site_url'].'/requests.php'; ?>"
+            return "<?php echo $wo['config']['site_url'].'/requests.php';?>"
          }
          <?php if ($wo['config']['smooth_loading'] == 1 && $wo['loggedin'] == true) { ?>
          function Wo_Ajax_Requests_Filee(){
-            return "<?php echo $wo['config']['site_url'].'/ajax_loading.php'; ?>"
+            return "<?php echo $wo['config']['site_url'].'/ajax_loading.php';?>"
          }
          
-         var websiteUrl = "<?php echo $wo['config']['site_url']; ?>";
+         var websiteUrl = "<?php echo $wo['config']['site_url'];?>";
          $(function() {
             <?php if ($wo['loggedin'] == true && $wo['config']['find_friends'] == 1) {?>
               <?php if ($wo['user']['last_location_update'] < time()): ?>
@@ -416,12 +394,12 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
     <?php echo Wo_LoadPage('style') ?>
     
     <?php if ($wo['page'] == 'welcome') { ?>
-      <style>.login_left_combo{color:<?php echo $wo['config']['btn_color']; ?>}body{background: <?php echo $wo['config']['btn_background_color']; ?> !important;}   .wo_regi_features:before{content: '';display: block;background-image: url(<?php echo $wo['config']['theme_url']; ?>/img/backgrounds/login.<?php echo $wo['config']['background_extension']; ?>);background-repeat: no-repeat;background-size: cover;background-position:center;position: absolute;top: 0;left: 0;right: 0;bottom: 0;opacity: 0.35;}
+      <style>.login_left_combo{color:<?php echo $wo['config']['btn_color'];?>}body{background: <?php echo $wo['config']['btn_background_color'];?> !important;}   .wo_regi_features:before{content: '';display: block;background-image: url(<?php echo $wo['config']['theme_url'];?>/img/backgrounds/login.<?php echo $wo['config']['background_extension'];?>);background-repeat: no-repeat;background-size: cover;background-position:center;position: absolute;top: 0;left: 0;right: 0;bottom: 0;opacity: 0.35;}
     </style>
       <?php }?>
 
     <?php if ($_COOKIE['mode'] == 'night') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url']; ?>/stylesheet/dark.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" id="night-mode-css">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/dark.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" id="night-mode-css">
     <?php } ?>
     <?php if($wo['config']['googleLogin'] != 0): ?>
     <meta name="google-signin-scope" content="profile email">
@@ -431,10 +409,10 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
    </head>
    
    <body <?php if ($wo['config']['chatSystem'] == 0) { ?> chat-off="true" <?php } ?>>
-    <?php $loadPage = Wo_LoadPage('thirdparty/theme-changer'); echo (!empty($loadPage)) ? $loadPage : ''; ?>
+    <?php $loadPage = Wo_LoadPage('thirdparty/theme-changer'); echo (!empty($loadPage)) ? $loadPage : '';?>
     <div id="focus-overlay"></div>
       <input type="hidden" class="seen_stories_users_ids" value="">
-      <input type="hidden" class="main_session" value="<?php echo Wo_CreateMainSession(); ?>">
+      <input type="hidden" class="main_session" value="<?php echo Wo_CreateMainSession();?>">
       <?php if($wo['page'] != 'welcome' && $wo['page'] != 'get_news_feed' && $wo['page'] != 'maintenance' && $wo['page'] != 'video-api'): ?>
          <header class="header-container">
             <?php echo Wo_LoadPage( 'header/content'); ?>
@@ -450,7 +428,7 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
         $container = 'wo-msg-container';
       }
       ?>
-      <div class="content-container <?php echo $container?>" style="<?php echo ($wo['page'] == 'timeline' || $wo['page'] == 'page' || $wo['page'] == 'group') ? 'margin-top:25px;' : ''; ?>">
+      <div class="content-container <?php echo $container?>" style="<?php echo ($wo['page'] == 'timeline' || $wo['page'] == 'page' || $wo['page'] == 'group') ? 'margin-top:25px;' : '';?>">
          <div class="ad-placement-header-footer">
             <?php 
                $header_ad = Wo_GetAd('header', false);
@@ -460,7 +438,7 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
                } 
                ?>
          </div>
-         <div id="contnet"><?php echo $wo['content']; ?></div> 
+         <div id="contnet"><?php echo $wo['content'];?></div> 
          <?php 
             $footer_ad = Wo_GetAd('footer', false);
             if($wo['page'] != 'admin' && $wo['page'] != 'welcome' && $wo['page'] != 'messages' && !empty($footer_ad)) {
@@ -517,20 +495,20 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
       <?php } ?>
       <?php if ($wo['loggedin'] == false) { ?>
       
-      <script type="text/javascript" src="<?php echo $wo['config']['theme_url']; ?>/javascript/welcome.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
+      <script type="text/javascript" src="<?php echo $wo['config']['theme_url'];?>/javascript/welcome.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
-      <script type="text/javascript" src="<?php echo $wo['config']['theme_url']; ?>/javascript/script.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
+      <script type="text/javascript" src="<?php echo $wo['config']['theme_url'];?>/javascript/script.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php if ($wo['loggedin'] == true) {?>
       <?php if ($wo['config']['google_map'] == 1) { ?>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $wo['config']['google_map_api']; ?>&libraries=places"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $wo['config']['google_map_api'];?>&libraries=places"></script>
       <?php } ?>
-      <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/audioRecord/recorder.js?version=<?php echo $wo['config']['version']; ?>"></script>
-      <script src="<?php echo $wo['config']['theme_url']; ?>/javascript/audioRecord/record.js?version=<?php echo $wo['config']['version']; ?>"></script>
+      <script src="<?php echo $wo['config']['theme_url'];?>/javascript/audioRecord/recorder.js?version=<?php echo $wo['config']['version']; ?>"></script>
+      <script src="<?php echo $wo['config']['theme_url'];?>/javascript/audioRecord/record.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
       <?php if ($wo['page'] == 'timeline' && $wo['loggedin'] == true && $wo['config']['css_upload'] == 1) { ?>
       <?php if (!empty($wo['user_profile']['css_file']) && file_exists($wo['user_profile']['css_file'])) {?>
-      <link class="styled-profile" rel="stylesheet" href="<?php echo Wo_GetMedia($wo['user_profile']['css_file']); ?>">
-      <?php echo $wo['css_file_header']; ?>
+      <link class="styled-profile" rel="stylesheet" href="<?php echo Wo_GetMedia($wo['user_profile']['css_file']);?>">
+      <?php echo $wo['css_file_header'];?>
       <?php } } ?>
       <div class="extra-css"></div>
       <?php if ($wo['page'] != 'welcome') { ?>
@@ -586,11 +564,11 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
       window.cookieconsent.initialise({
         "palette": {
           "popup": {
-            "background": "<?php echo $wo['config']['header_background']; ?>",
+            "background": "<?php echo $wo['config']['header_background'];?>",
             "text": "#fff"
           },
           "button": {
-            "background": "<?php echo $wo['config']['btn_background_color']; ?>"
+            "background": "<?php echo $wo['config']['btn_background_color'];?>"
           }
         },
         "theme": "edgeless",
@@ -599,7 +577,7 @@ if (!empty($wo['story']['product_id']) && !$metaDataSent) {
           "message": "<?php echo $wo['lang']['cookie_message']?>",
           "dismiss": "<?php echo $wo['lang']['cookie_dismiss']?>",
           "link": "<?php echo $wo['lang']['cookie_link']?>",
-          "href": "<?php echo Wo_SeoLink('index.php?link1=terms&type=privacy-policy'); ?>"
+          "href": "<?php echo Wo_SeoLink('index.php?link1=terms&type=privacy-policy');?>"
         }
       })});
       </script>
