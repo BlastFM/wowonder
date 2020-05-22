@@ -124,7 +124,7 @@ if (empty($wo['description'])) {
           echo Wo_LoadPage('header/og-meta-4');
           $metaDataSent = true;
       } ?>
-      <?php if (!empty($wo['story']['fund'])) {  ?>
+      <?php if (!empty($wo['story']['fund']) && !$metaDataSent) {  ?>
       <meta property="og:title" content="<?php echo $wo['story']['fund']['fund']['title']; ?>" />
       <meta property="og:type" content="funding" />
       <meta property="og:image" content="<?php echo imageUrl($wo['story']['fund']['fund']['image']); ?>" />
@@ -133,7 +133,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:description" content="<?php echo $wo['story']['fund']['fund']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['story']['fund']['fund']['image']); ?>" />
       <?php $metaDataSent = true; } ?>
-      <?php if (!empty($wo['story']['fund_data'])) {  ?>
+      <?php if (!empty($wo['story']['fund_data']) && !$metaDataSent) {  ?>
       <meta property="og:title" content="<?php echo $wo['story']['fund_data']['title']; ?>" />
       <meta property="og:type" content="funding" />
       <meta property="og:image" content="<?php echo imageUrl($wo['story']['fund_data']['image']); ?>" />
@@ -142,7 +142,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:description" content="<?php echo $wo['story']['fund_data']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['story']['fund_data']['image']); ?>" />
       <?php $metaDataSent = true; } ?>
-      <?php if (!empty($wo['fund'])) {  ?>
+      <?php if (!empty($wo['fund']) && !$metaDataSent) {  ?>
       <meta property="og:title" content="<?php echo $wo['fund']['title']; ?>" />
       <meta property="og:type" content="funding" />
       <meta property="og:image" content="<?php echo imageUrl($wo['fund']['image']); ?>" />
@@ -151,7 +151,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:description" content="<?php echo $wo['fund']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['fund']['image']); ?>" />
       <?php $metaDataSent = true; } ?>
-      <?php if (!empty($wo['story']['job'])) {  ?>
+      <?php if (!empty($wo['story']['job']) && !$metaDataSent) {  ?>
       <meta property="og:title" content="<?php echo $wo['story']['job']['title']; ?>" />
       <meta property="og:type" content="job" />
       <meta property="og:image" content="<?php echo imageUrl(Wo_GetMedia($wo['story']['job']['image'])); ?>" />
@@ -160,7 +160,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:description" content="<?php echo $wo['story']['job']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl(Wo_GetMedia($wo['story']['job']['image'])); ?>" />
       <?php $metaDataSent = true; } ?>
-      <?php if ($wo['page'] == 'read-blog') { ?>
+      <?php if ($wo['page'] == 'read-blog' && !$metaDataSent) { ?>
       <meta property="og:type" content="article" />
       <meta property="og:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
       <meta property="og:image:secure_url" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
