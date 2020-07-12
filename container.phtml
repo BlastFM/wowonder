@@ -173,11 +173,6 @@ if (empty($wo['description'])) {
       <meta name="twitter:description" content="<?php echo $wo['article']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
       <?php $metaDataSent = true; } ?>
-      <?php if (!empty($_SERVER) && !empty($_SERVER['REQUEST_URI'])) {
-        $link_text = substr($wo['config']['site_url'], 0,strpos($wo['config']['site_url'], '://') + 2).parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-         ?>
-         <link rel="canonical" href="<?php echo($link_text) ?>" />
-      <?php } ?>
       <?php if (!$metaDataSent) {include 'header/og-meta-default.phtml';} ?>
       <?php if (!empty($_SERVER) && !empty($_SERVER['REQUEST_URI'])) {
         $link_text = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
