@@ -1,22 +1,8 @@
-      <meta property="og:type" content="article" />
-<?php if (!empty($wo['story']['postText'])) { ?>
-      <meta property="og:title" content="<?php echo $wo['story']['postText']; ?>" />
-<?php } else { ?>
-      <meta property="og:title" content="<?php echo $wo['title']; ?>" />
-<?php } ?>
-      <meta property="og:url" content="<?php echo $wo['story']['url']; ?>" />
-<?php
-//    Check if site url has trailing slash
-if (preg_match("/\/$/", $wo['config']['site_url'])) { ?>
-      <meta property="og:image" content="<?php echo $wo['config']['site_url'].$wo['story']['postFile']; ?>" />
-<?php } else { ?>
-      <meta property="og:image" content="<?php echo $wo['config']['site_url']."/".$wo['story']['postFile']; ?>" />
-<?php } ?>
-      <meta property="og:description" content="<?php echo $wo['description']; ?>" />
-      <meta name="twitter:card" content="summary" />
-<?php if (!empty($wo['story']['postText'])) { ?>
-      <meta name="twitter:title" content="<?php echo $wo['story']['postText']; ?>" />
-<?php } else { ?>
-      <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
-<?php } ?>
-      <meta name="twitter:description" content="<?php echo $wo['description']; ?>" />
+	<meta property="og:title" content="<?php echo $wo['title'];?>" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="<?php echo Wo_GetMedia($wo['story']['postFile'])?>" />
+	<meta property="og:description" content="<?php echo $wo['description'];?>" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="<?php echo $wo['title'];?>" />
+	<meta name="twitter:description" content="<?php echo $wo['description'];?>" />
+	<meta name="twitter:image" content="<?php echo Wo_GetMedia($wo['story']['postFile'])?>" />
