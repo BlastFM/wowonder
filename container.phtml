@@ -38,6 +38,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['movie']['name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['movie']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['movie']['cover']; ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['movie']['name']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'page' && !empty($wo['page_profile']) && !$metaDataSent) { ?>
       <meta property="og:title" content="<?php echo $wo['page_profile']['page_name']; ?>" />
@@ -49,6 +50,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['page_profile']['page_name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['page_profile']['page_description']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['page_profile']['cover']; ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['page_profile']['page_name']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'group' && !empty($wo['group_profile']) && !$metaDataSent) { ?>
       <meta property="og:title" content="<?php echo $wo['group_profile']['group_name']; ?>" />
@@ -60,6 +62,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['group_profile']['group_name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['group_profile']['about']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['group_profile']['avatar']; ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['group_profile']['group_name']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'game' && !empty($wo['game']) && !$metaDataSent) { ?>
       <meta property="og:type" content="game" />
@@ -71,6 +74,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['game']['game_name']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['game']['game_name']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['game']['game_avatar']; ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['game']['game_name']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'welcome' && !$metaDataSent) { ?>
       <meta property="og:type" content="article" />
@@ -83,6 +87,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['description']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'timeline' && !$metaDataSent) {
       // Note that we use the profile cover image for Facebook and the profile avatar for Twitter ?>
@@ -98,6 +103,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['user_profile']['about']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['user_profile']['avatar']); ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['title']; ?> Image" />
       <?php if ($wo['user_profile']['share_my_data'] == 0) { ?>
       <meta name="robots" content="noindex,nofollow" />
       <meta name="googlebot" content="noindex" />
@@ -134,6 +140,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['story']['fund']['fund']['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['story']['fund']['fund']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['story']['fund']['fund']['image']); ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['story']['fund']['fund']['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if (!empty($wo['story']['fund_data'])) {  ?>
       <meta property="og:type" content="funding" />
@@ -144,6 +151,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['story']['fund_data']['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['story']['fund_data']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['story']['fund_data']['image']); ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['story']['fund_data']['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if (!empty($wo['fund'])) {  ?>
       <meta property="og:type" content="funding" />
@@ -154,6 +162,7 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['fund']['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['fund']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['fund']['image']); ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['fund']['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if (!empty($wo['story']['job'])) {  ?>
       <meta property="og:type" content="job" />
@@ -164,18 +173,20 @@ if (empty($wo['description'])) {
       <meta name="twitter:title" content="<?php echo $wo['story']['job']['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['story']['job']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl(Wo_GetMedia($wo['story']['job']['image'])); ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['story']['job']['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'read-blog') { ?>
       <meta property="og:type" content="article" />
+      <meta property="og:title" content="<?php echo $wo['article']['title']; ?>" />
       <meta property="og:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
       <meta property="og:image:secure_url" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
       <meta property="og:description" content="<?php echo $wo['article']['description']; ?>" />
-      <meta property="og:title" content="<?php echo $wo['article']['title']; ?>" />
       <meta property="og:url" content="<?php echo $wo['article']['url']; ?>" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content="<?php echo $wo['article']['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['article']['description']; ?>" />
       <meta name="twitter:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
+      <meta name="twitter:image:alt" content="<?php echo $wo['article']['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if (!$metaDataSent) {include 'header/og-meta-default.phtml';} ?>
       <?php if (!empty($_SERVER) && !empty($_SERVER['REQUEST_URI'])) {
