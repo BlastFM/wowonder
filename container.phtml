@@ -189,12 +189,12 @@ if (empty($wo['description'])) {
       <?php $metaDataSent = true; } ?>
       <?php if (!empty($wo['story']['postText']) && !$metaDataSent) { ?>
       <meta property="og:type" content="article" />
-      <meta property="og:title" content="BlastFM Social Media User Post" />
+      <meta property="og:title" content="<?php echo $wo['title']; ?>" />
       <meta property="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
       <meta property="og:description" content="<?php echo $wo['story']['postText']; ?>" />
       <meta property="og:url" content="<?php echo $wo['story']['url']; ?>" />
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content="BlastFM Social Media User Post" />
+      <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
       <meta name="twitter:description" content="<?php echo $wo['story']['postText']; ?>" />
       <meta name="twitter:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
       <meta name="twitter:image:alt" content="BlastFM Social Media Post Number <?php echo $wo['story']['id']; ?> Image" />
