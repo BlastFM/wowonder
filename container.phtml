@@ -126,7 +126,6 @@ if (empty($wo['description'])) {
           echo Wo_LoadPage('header/og-meta-2');
           $metaDataSent = true;
       }
-
       if (!empty($wo['story']['product_id']) && !$metaDataSent) {
           echo Wo_LoadPage('header/og-meta-4');
           $metaDataSent = true;
@@ -188,53 +187,75 @@ if (empty($wo['description'])) {
       <meta name="twitter:image" content="<?php echo imageUrl($wo['article']['thumbnail']); ?>" />
       <meta name="twitter:image:alt" content="<?php echo $wo['article']['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
+      <?php if (!empty($wo['story']['postText']) && !$metaDataSent) { ?>
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content="BlastFM Social Media User Post" />
+      <meta property="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
+      <meta property="og:description" content="<?php echo $wo['story']['postText']; ?>" />
+      <meta property="og:url" content="<?php echo $wo['story']['url']; ?>" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="BlastFM Social Media User Post" />
+      <meta name="twitter:description" content="<?php echo $wo['story']['postText']; ?>" />
+      <meta name="twitter:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
+      <meta name="twitter:image:alt" content="BlastFM Social Media Post Number <?php echo $wo['story']['id']; ?> Image" />
+      <?php $metaDataSent = true; } ?>
       <?php if (!$metaDataSent) {include 'header/og-meta-default.phtml';} ?>
       <?php if (!empty($_SERVER) && !empty($_SERVER['REQUEST_URI'])) {
         $link_text = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-      ?>
+        //$link_text = substr($wo['config']['site_url'], 0,strpos($wo['config']['site_url'], '://') + 2).parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+         ?>
       <link rel="canonical" href="<?php echo($link_text) ?>" />
       <?php } ?>
-            <link rel="shortcut icon" type="image/png" href="<?php echo $wo['config']['theme_url'];?>/img/icon.png" />
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/general-style-plugins.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
+      <link rel="shortcut icon" type="image/png" href="<?php echo $wo['config']['theme_url'];?>/img/icon.png"/>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/general-style-plugins.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php if($wo['language_type'] == 'rtl' && $wo['page'] != 'welcome') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/bootsrap-rtl.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/bootsrap-rtl.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
       <?php if ($wo['page'] == 'create_blog' || $wo['page'] == 'edit-blog') { ?>
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/tinymce/js/tinymce/tinymce.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
+
+
+
       <?php if ($wo['page'] == 'welcome') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } else { ?>
       <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/font-awesome-4.7.0/css/font-awesome.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
-        <?php if ($wo['page'] == 'messages') { ?>
-        <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet" />
-        <?php } ?>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/font-awesome-4.7.0/css/font-awesome.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+
+	  <?php if ($wo['page'] == 'messages') { ?>
+	  <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+	  <?php } ?>
 
      <?php if ($wo['page'] == 'welcome' && $wo['language_type'] == 'rtl') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
+
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/jquery-3.1.1.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
 
       <?php //if ($wo['page'] == 'ads'): ?>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css?version=<?php echo $wo['config']['version']; ?>" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css?version=<?php echo $wo['config']['version']; ?>">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php //endif; ?>
-        <?php if ($wo['page'] == 'friends_nearby'): ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/leaflet.css?version=<?php echo $wo['config']['version']; ?>" />
+
+	  <?php if ($wo['page'] == 'friends_nearby'): ?>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/leaflet.css?version=<?php echo $wo['config']['version']; ?>">
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/leaflet.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php endif; ?>
+
       <?php if ($wo['page'] == 'forum') { ?>
         <script src="<?php echo $wo['config']['theme_url'];?>/javascript/forum/script.master.js?version=<?php echo $wo['config']['version']; ?>"></script>
         <script src="<?php echo $wo['config']['theme_url'];?>/javascript/forum/forum.ajax.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
+
       <?php if ($wo['page'] == 'movies' || $wo['page'] == 'watch_movie') { ?>
         <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/movies/style.movies.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
       <?php } ?>
+
       <?php if (isset($wo['bbcodeditor']) && $wo['bbcodeditor']):?>
       <!-- <script src="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.js"></script>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.css" media="all"> -->
@@ -242,10 +263,10 @@ if (empty($wo['description'])) {
       <?php if ($wo['config']['checkout_payment'] == 'yes') { ?>
         <script type="text/javascript" src="https://www.2checkout.com/checkout/api/2co.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/player/fluidplayer.min.css?version=<?php echo $wo['config']['version']; ?>" type="text/css" />
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/player/fluidplayer.min.css?version=<?php echo $wo['config']['version']; ?>" type="text/css"/>
       <script src="<?php echo $wo['config']['theme_url'];?>/player/fluidplayer.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php if ($wo['loggedin'] == true && $wo['page'] == 'home' && $wo['config']['web_push'] == 1) { ?>
-      <link rel="manifest" href="<?php echo $wo['config']['theme_url'];?>/javascript/OneSignalSDKFiles/manifest.json" />
+      <link rel="manifest" href="<?php echo $wo['config']['theme_url'];?>/javascript/OneSignalSDKFiles/manifest.json">
       <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
       <script>
         var push_user_id = '';
@@ -279,6 +300,7 @@ if (empty($wo['description'])) {
       <style>
       <?php echo $wo['config']['styles_cc']; ?>
       </style>
+
       <script type="text/javascript">
          <?php echo $wo['config']['header_cc']; ?>
          function Wo_Ajax_Requests_File(){
@@ -466,11 +488,11 @@ if (empty($wo['description'])) {
       <?php }?>
 
     <?php if ($_COOKIE['mode'] == 'night') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/dark.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" id="night-mode-css" />
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/dark.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" id="night-mode-css">
     <?php } ?>
     <?php if($wo['config']['googleLogin'] != 0): ?>
-    <meta name="google-signin-scope" content="profile email" />
-    <meta name="google-signin-client_id" content="<?php echo $wo['config']['googleAppId']?>" />
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="<?php echo $wo['config']['googleAppId']?>">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <?php endif; ?>
     <?php if ($wo['config']['agora_live_video'] == 1 && !empty($wo['config']['agora_app_id'])) { ?>
@@ -480,12 +502,168 @@ if (empty($wo['description'])) {
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <?php } ?>
     <script crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <script src="<?php echo $wo['config']['theme_url'];?>/javascript/socket.io.js"></script>
+      <script>
+      let socket = null
+      let groupChatListener = {}
+      $(()=>{
+        <?php if ($wo['config']['node_socket_flow'] == "1"){ $parse = parse_url($wo['config']['site_url']);?>
+        var main_hash_id = $('.main_session').val();
+        <?php if ($wo['config']['nodejs_ssl'] == "1") {?>
+          socket = io("https://<?php echo $parse['host'];?>:<?php echo $wo['config']['nodejs_ssl_port'];?>/?hash=" + main_hash_id)
+        <?php } else {?>
+         socket = io("http://<?php echo $parse['host'];?>:<?php echo $wo['config']['nodejs_port'];?>/?hash=" + main_hash_id)
+        <?php } ?>
+        let recipient_ids = []
+        let recipient_group_ids = []
+        setTimeout(function(){
+          var inputs = $("input.chat-user-id");
+          $(".chat-wrapper").each(function(){
+            let id = $(this).attr("class").substr("chat-wrapper".length);
+            let isGroup = $(this).attr("class").substr("chat-wrapper".length).split("_").includes("group")
+            if(isGroup) {
+              id = id.substr(' chat_group_'.length)
+              recipient_group_ids.push(id)
+            } else{
+              id = id.substr(' chat_'.length)
+              recipient_ids.push(id)
+            }
+          });
+          socket.emit('join', {username: "<?php echo $wo['user']['username'];?>", user_id: _getCookie('user_id'), recipient_ids, recipient_group_ids }, ()=>{
+              // setInterval(() => {
+              //   socket.emit("get_user_status", {user_id: _getCookie("user_id")})
+              // }, 2000);
+              setInterval(() => {
+                socket.emit("ping_for_lastseen", {user_id: _getCookie("user_id")})
+              }, 2000);
+          });
+         }, 3000);
+
+        socket.on("reconnect", ()=>{
+          let recipient_ids = []
+          let recipient_group_ids = []
+          setTimeout(function(){
+            var inputs = $("input.chat-user-id");
+            $(".chat-wrapper").each(function(){
+              let id = $(this).attr("class").substr("chat-wrapper".length);
+              let isGroup = $(this).attr("class").substr("chat-wrapper".length).split("_").includes("group")
+              if(isGroup) {
+                id = id.substr(' chat_group_'.length)
+                recipient_group_ids.push(id)
+              } else{
+                id = id.substr(' chat_'.length)
+                recipient_ids.push(id)
+              }
+            });
+            socket.emit('join', {username: "<?php echo $wo['user']['username'];?>", user_id: _getCookie('user_id'), recipient_ids, recipient_group_ids }, ()=>{
+                // setInterval(() => {
+                //   socket.emit("get_user_status", {user_id: _getCookie("user_id")})
+                // }, 2000);
+                setInterval(() => {
+                  socket.emit("ping_for_lastseen", {user_id: _getCookie("user_id")})
+                }, 2000);
+            });
+          }, 3000);
+        })
+          socket.on("on_user_loggedin", (data) => {
+            $('#chat_' + data.user_id).find('.chat-tab-status').addClass('active');
+            $("#online_" + data.user_id).find('svg path').attr('fill', '#60d465');
+            $("#messages-recipient-" + data.user_id).find('.dot').css({"background-color": "#63c666"});
+          });
+          socket.on("on_user_loggedoff", (data) => {
+            $('#chat_' + data.user_id).find('.chat-tab-status').removeClass('active');
+            $("#online_" + data.user_id).find('svg path').attr('fill', '#dddddd');
+            $("#messages-recipient-" + data.user_id).find('.dot').css({"background-color": "lightgray"});
+          });
+          socket.on("on_avatar_changed", (data) => {
+            $("#online_" + data.user_id).find('img').attr('src', data.name);
+            $("#messages-recipient-" + data.user_id).find('img').attr('src', data.name);
+          });
+          socket.on("on_name_changed", (data) => {
+            $("#online_" + data.user_id).find('#chat-tab-id').html(data.name);
+            $("#messages-recipient-" + data.user_id).find('.messages-user-name').html(data.name);
+          });
+        socket.on("color-change", (data)=>{
+          if (data.sender == <?php echo $wo['user']['user_id'];?>) {
+            $(".chat_" + data.id).find('.outgoing .message-text, .outgoing .message-media').css('background', data.color);
+            $(".chat_" + data.id).find('.outgoing .message-text').css('color', '#fff');
+            $(".chat_" + data.id).find('.select-color path').css('fill', data.color);
+            $(".chat_" + data.id).find('#color').val(data.color);
+          }
+          let user_id = $('#user-id').val();
+          if(""+user_id === ""+data.id) {
+            if(data.sender == <?php echo $wo['user']['user_id']; ?>){
+                  $('.send-button').css('background-color', data.color);
+                  $('.send-button').css('border-color', data.color);
+                  $('#wo_msg_right_prt .message-option-btns .btn svg').css('color', data.color);
+                  $(".messages-container").find(".pull-right").find(".message").css('background-color', data.color);
+                  $(".messages-container").find(".pull-right").find(".message-text").css('background-color', data.color)
+              }
+          }
+        })
+        var new_current_messages = 0;
+        socket.on("private_message", (data)=>{
+          var chat_container = $('.chat-tab').find('.chat_main_' + data.id);
+          if (chat_container.length > 0) {
+             chat_container.find('.chat-messages-wrapper').find("div[class*='message-seen']").empty();
+             chat_container.find('.chat-messages-wrapper').find("div[class*='message-typing']").empty();
+             chat_container.find('.chat-messages-wrapper').append(data.messages_html);
+             setTimeout(function(){
+                  chat_container.find('.chat-messages-wrapper').scrollTop(chat_container.find('.chat-messages-wrapper')[0].scrollHeight);
+               }, 100);
+             if (data.sender == <?php echo $wo['user']['user_id'];?>) {
+               $(".chat_" + data.id).find('.outgoing .message-text, .outgoing .message-media').css('background', data.color);
+               $(".chat_" + data.id).find('.outgoing .message-text').css('color', '#fff');
+               $(".chat_" + data.id).find('.select-color path').css('fill', data.color);
+               $(".chat_" + data.id).find('#color').val(data.color);
+               $(".text-sender-container .red-list").css('background', data.color);
+               $(".text-sender-container .btn-file").css('background', data.color);
+               $(".text-sender-container .btn-file").css('border-color', data.color);
+             }
+          } else {
+            current_number = $('#online_' + data.id).find('.new-message-alert').text();
+            $('#online_' + data.id).find('.new-message-alert').html(Number(current_number) + 1).show();
+          }
+          if(data.sender != <?php echo $wo['user']['user_id'];?>){
+             document.getElementById('message-sound').play();
+          }
+          if (!$('#sendMessage').is(':focus') && chat_container.length == 0) {
+             new_current_messages = new_current_messages + 1;
+             current_messages_number = Number($("[data_messsages_count]").attr('data_messsages_count')) + 1;
+             $("[data_messsages_count]").text(current_messages_number);
+             $("[data_messsages_count]").attr('data_messsages_count', current_messages_number);
+             document.title = 'New Message | ' + document_title;
+          }
+
+        })
+
+        socket.on("group_message", (data)=>{
+              var chat_messages_wrapper = $('.group-messages-wrapper-'+data.id);
+              if (data.status == 200) {
+              if ($(".group-messages-wrapper-"+data.id).find('.no_message').length > 0) {
+                $(".group-messages-wrapper-"+data.id).find('.chat-messages').html(data.html);
+              }else{
+                $(".group-messages-wrapper-"+data.id).find('.chat-messages').append(data.html);
+              }
+
+              chat_messages_wrapper.scrollTop(chat_messages_wrapper[0].scrollHeight);
+            }
+          })
+
+        <?php
+        }
+        ?>
+      });
+      </script>
+
    </head>
+
    <body <?php if ($wo['config']['chatSystem'] == 0) { ?> chat-off="true" <?php } ?>>
     <?php $loadPage = Wo_LoadPage('thirdparty/theme-changer'); echo (!empty($loadPage)) ? $loadPage : '';?>
     <div id="focus-overlay"></div>
-      <input type="hidden" class="seen_stories_users_ids" value="" />
-      <input type="hidden" class="main_session" value="<?php echo Wo_CreateMainSession();?>" />
+      <input type="hidden" class="seen_stories_users_ids" value="">
+      <input type="hidden" class="main_session" value="<?php echo Wo_CreateMainSession();?>">
       <?php if($wo['page'] != 'welcome' && $wo['page'] != 'get_news_feed' && $wo['page'] != 'maintenance' && $wo['page'] != 'video-api'): ?>
          <header class="header-container">
             <?php echo Wo_LoadPage( 'header/content'); ?>
@@ -527,9 +705,9 @@ if (empty($wo['description'])) {
          </footer>
          <div class="second-footer" style="<?php echo (in_array($wo['page'], $wo['footer_pages']) ? '' : 'display: none;' ); ?> ">
             <?php
-               //if (in_array($wo['page'], $wo['footer_pages']) && $wo['page'] != 'messages' && $wo['page'] != 'jobs') {
+               if ($wo['page'] != 'messages') {
                   echo Wo_LoadPage('footer/content');
-               //}
+               }
             ?>
          </div>
          <div class="extra">
@@ -547,6 +725,13 @@ if (empty($wo['description'])) {
       </div>
       <!-- Load modal alerts -->
     <?php echo Wo_LoadPage('modals/site-alerts'); ?>
+
+    <!-- <div id="node-js-templates">
+      <?php /*if ($wo['config']['node_socket_flow'] == "1"){
+        echo Wo_LoadPage('chat/chat-list');
+      }*/
+      ?>
+    <div> -->
 
     <?php if (($wo['page'] == 'home' || $wo['page'] == 'timeline' || $wo['page'] == 'products') && $wo['config']['classified'] == 1) { ?>
     <?php echo Wo_LoadPage('products/create'); ?>
@@ -570,6 +755,24 @@ if (empty($wo['description'])) {
 
       <script type="text/javascript" src="<?php echo $wo['config']['theme_url'];?>/javascript/welcome.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
+      <?php
+       if ($wo['config']['node_socket_flow'] == "1")
+       {
+         ?>
+         <script type="text/javascript">
+          const node_socket_flow = "1"
+          </script>
+      <?php
+       }
+       if ($wo['config']['node_socket_flow'] == "0")
+       {
+         ?>
+         <script type="text/javascript">
+          const node_socket_flow = "0"
+          </script>
+      <?php
+       }
+       ?>
       <script type="text/javascript" src="<?php echo $wo['config']['theme_url'];?>/javascript/script.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php if ($wo['loggedin'] == true) {?>
       <?php if ($wo['config']['google_map'] == 1) { ?>
@@ -616,18 +819,18 @@ if (empty($wo['description'])) {
       });
        /*Language Select*/
         $(document).ready(function(){
-          $("#wo_language_modal .language_select .English").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/united-states.svg" /></span> ');
-          $("#wo_language_modal .language_select .Arabic").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/saudi-arabia.svg" /></span> ');
-          $("#wo_language_modal .language_select .Dutch").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/netherlands.svg" /></span> ');
-          $("#wo_language_modal .language_select .French").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/france.svg" /></span> ');
-          $("#wo_language_modal .language_select .German").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/germany.svg" /></span> ');
-          $("#wo_language_modal .language_select .Hungarian, #wo_language_modal .language_select .Magyar").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/hungary.svg" /></span> ');
-          $("#wo_language_modal .language_select .Italian").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/italy.svg" /></span> ');
-          $("#wo_language_modal .language_select .Portuguese").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/portugal.svg" /></span> ');
-          $("#wo_language_modal .language_select .Russian").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/russia.svg" /></span> ');
-          $("#wo_language_modal .language_select .Spanish").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/spain.svg" /></span> ');
-          $("#wo_language_modal .language_select .Serbian").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/serbia.svg" /></span> ');
-          $("#wo_language_modal .language_select .Turkish").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/turkey.svg" /></span> ');
+          $("#wo_language_modal .language_select .English").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/united-states.svg"/></span> ');
+          $("#wo_language_modal .language_select .Arabic").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/saudi-arabia.svg"/></span> ');
+          $("#wo_language_modal .language_select .Dutch").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/netherlands.svg"/></span> ');
+          $("#wo_language_modal .language_select .French").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/france.svg"/></span> ');
+          $("#wo_language_modal .language_select .German").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/germany.svg"/></span> ');
+          $("#wo_language_modal .language_select .Hungarian, #wo_language_modal .language_select .Magyar").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/hungary.svg"/></span> ');
+          $("#wo_language_modal .language_select .Italian").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/italy.svg"/></span> ');
+          $("#wo_language_modal .language_select .Portuguese").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/portugal.svg"/></span> ');
+          $("#wo_language_modal .language_select .Russian").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/russia.svg"/></span> ');
+          $("#wo_language_modal .language_select .Spanish").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/spain.svg"/></span> ');
+          $("#wo_language_modal .language_select .Serbian").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/serbia.svg"/></span> ');
+          $("#wo_language_modal .language_select .Turkish").append('<span class="language_initial"><img src="<?php echo $wo['config']['theme_url']; ?>/img/flags/turkey.svg"/></span> ');
         });
         <?php echo $wo['config']['footer_cc']; ?>
       </script>
@@ -659,7 +862,7 @@ if (empty($wo['description'])) {
     <style>.cc-bottom{bottom: 2.5em;}</style>
       <?php } ?>
 
-            <?php if ($wo['config']['user_status'] == 1) { ?>
+		<?php if ($wo['config']['user_status'] == 1) { ?>
       <!-- // NEW STORY -->
       <script type="text/javascript">
           $(document).on('click', '.story-image-wrapper', function(event) {
@@ -822,7 +1025,7 @@ if (empty($wo['description'])) {
     </script>
       <!-- // NEW STORY -->
 
-        <?php } ?>
+	  <?php } ?>
     <?php
     if ($wo['loggedin'] == true) {
     $wo['user']['notification_settings'] = (Array) json_decode(html_entity_decode($wo['user']['notification_settings']));
@@ -833,6 +1036,5 @@ if (empty($wo['description'])) {
     <?php } } ?>
     <div class="modal fade sun_modal" id="apply-job-modal" role="dialog">
     </div>
-
    </body>
 </html>
