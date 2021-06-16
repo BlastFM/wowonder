@@ -15,4 +15,3 @@ if (isset($_COOKIE['user_id'])) {
 	header("Location: ".$wo['config']['site_url']."/?cache=".time());
 	exit();
 ?>
-
