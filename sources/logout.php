@@ -12,7 +12,7 @@ if (isset($_COOKIE['user_id'])) {
     setcookie('user_id', null, -1, '/');
 }
 	session_destroy();
-	header("Cache-Control: no-cache, must-revalidate");
+	header("Cache-Control: no-cache, must-revalidate, max-age=0");
 	header("Refresh:0; url=".$wo['config']['site_url']);
 	exit();
 ?>
