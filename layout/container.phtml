@@ -90,10 +90,11 @@ if (empty($wo['description'])) {
       <meta name="twitter:image:alt" content="<?php echo $wo['title']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if ($wo['page'] == 'timeline' && !$metaDataSent) {
-      // Note that we use the profile cover image for Facebook and the profile avatar for Twitter ?>
+      // Note that we use the profile cover image for Facebook and the profile avatar for Twitter
+      ?>
       <meta property="og:type" content="article" />
       <meta property="og:title" content="<?php echo $wo['title']; ?>" />
-      <meta property="og:description" content="<?php echo $wo['user_profile']['about']; ?>" />
+      <meta property="og:description" content="<?php echo addslashes($wo['user_profile']['about']); ?>" />
       <meta property="og:url" content="<?php echo $wo['user_profile']['url']; ?>" />
       <meta property="og:image" content="<?php echo imageUrl($wo['user_profile']['cover']); ?>" />
       <meta property="og:image:alt" content="BlastFMSocialMedia - <?php echo $wo['user_profile']['username']; ?>" />
@@ -190,13 +191,22 @@ if (empty($wo['description'])) {
       <?php if (!empty($wo['story']['postText']) && !$metaDataSent) { ?>
       <meta property="og:type" content="article" />
       <meta property="og:title" content="<?php echo $wo['title']; ?>" />
+      <?php if (!empty($wo['story']['postLinkImage'])) { ?>
+      <meta name="og:image" content="<?php echo ($wo['story']['postLinkImage']); ?>" />
+      <?php } else { ?>
+      <meta name="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
+      <?php } ?>
       <meta property="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
-      <meta property="og:description" content="<?php echo $wo['story']['postText']; ?>" />
+      <meta property="og:description" content="<?php echo htmlspecialchars($wo['story']['postText'], ENT_QUOTES); ?>" />
       <meta property="og:url" content="<?php echo $wo['story']['url']; ?>" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content="<?php echo $wo['title']; ?>" />
-      <meta name="twitter:description" content="<?php echo $wo['story']['postText']; ?>" />
+      <meta name="twitter:description" content="<?php echo htmlspecialchars($wo['story']['postText'], ENT_QUOTES); ?>" />
+      <?php if (!empty($wo['story']['postLinkImage'])) { ?>
+      <meta name="twitter:image" content="<?php echo ($wo['story']['postLinkImage']); ?>" />
+      <?php } else { ?>
       <meta name="twitter:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
+      <?php } ?>
       <meta name="twitter:image:alt" content="BlastFM Social Media Post Number <?php echo $wo['story']['id']; ?> Image" />
       <?php $metaDataSent = true; } ?>
       <?php if (!$metaDataSent) {include 'header/og-meta-default.phtml';} ?>
