@@ -196,7 +196,6 @@ if (empty($wo['description'])) {
       <?php } else { ?>
       <meta name="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
       <?php } ?>
-      <meta property="og:image" content="<?php echo $wo['config']['theme_url']; ?>/img/og.jpg" />
       <meta property="og:description" content="<?php echo htmlspecialchars($wo['story']['postText'], ENT_QUOTES); ?>" />
       <meta property="og:url" content="<?php echo $wo['story']['url']; ?>" />
       <meta name="twitter:card" content="summary" />
@@ -225,9 +224,6 @@ if (empty($wo['description'])) {
       <?php if ($wo['page'] == 'create_blog' || $wo['page'] == 'edit-blog') { ?>
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/tinymce/js/tinymce/tinymce.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
-
-
-
       <?php if ($wo['page'] == 'welcome') { ?>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } else { ?>
@@ -235,37 +231,29 @@ if (empty($wo['description'])) {
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/font-awesome-4.7.0/css/font-awesome.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
-
-	  <?php if ($wo['page'] == 'messages') { ?>
-	  <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
-	  <?php } ?>
-
+    <?php if ($wo['page'] == 'messages') { ?>
+    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+    <?php } ?>
      <?php if ($wo['page'] == 'welcome' && $wo['language_type'] == 'rtl') { ?>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
-
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/jquery-3.1.1.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
-
       <?php //if ($wo['page'] == 'ads'): ?>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css?version=<?php echo $wo['config']['version']; ?>">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php //endif; ?>
-
-	  <?php if ($wo['page'] == 'friends_nearby'): ?>
+    <?php if ($wo['page'] == 'friends_nearby'): ?>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/leaflet.css?version=<?php echo $wo['config']['version']; ?>">
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/leaflet.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php endif; ?>
-
       <?php if ($wo['page'] == 'forum') { ?>
         <script src="<?php echo $wo['config']['theme_url'];?>/javascript/forum/script.master.js?version=<?php echo $wo['config']['version']; ?>"></script>
         <script src="<?php echo $wo['config']['theme_url'];?>/javascript/forum/forum.ajax.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
-
       <?php if ($wo['page'] == 'movies' || $wo['page'] == 'watch_movie') { ?>
         <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/movies/style.movies.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" />
       <?php } ?>
-
       <?php if (isset($wo['bbcodeditor']) && $wo['bbcodeditor']):?>
       <!-- <script src="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.js"></script>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.css" media="all"> -->
@@ -310,7 +298,6 @@ if (empty($wo['description'])) {
       <style>
       <?php echo $wo['config']['styles_cc']; ?>
       </style>
-
       <script type="text/javascript">
          <?php echo $wo['config']['header_cc']; ?>
          function Wo_Ajax_Requests_File(){
@@ -320,7 +307,6 @@ if (empty($wo['description'])) {
          function Wo_Ajax_Requests_Filee(){
             return "<?php echo $wo['config']['site_url'].'/ajax_loading.php';?>"
          }
-
          var websiteUrl = "<?php echo $wo['config']['site_url'];?>";
          $(function() {
             <?php if ($wo['loggedin'] == true && $wo['config']['find_friends'] == 1) {?>
@@ -369,7 +355,6 @@ if (empty($wo['description'])) {
                             Wo_CleanRecordNodes();
                             Wo_stopRecording();
                             Wo_StopLocalStream();
-
                             return false;
                         }
                     }
@@ -423,7 +408,6 @@ if (empty($wo['description'])) {
                         $(window).unbind('popstate');
                         window.location.href = document.location;
                       };
-
                      if (json_data.page == 'timeline' || json_data.page == 'page' || json_data.page == 'group') {
                        $('.content-container').css('margin-top', '25px');
                        $('.ad-placement-header-footer').find('.contnet').css('margin-top', '20px');
@@ -435,7 +419,6 @@ if (empty($wo['description'])) {
                         $('footer .footer-wrapper').show();
                      }
                      else if(json_data.is_footer == 1 && $('.second-footer').css('display') != 'none'){
-
                      } else {
                       if ($(window).width() < 720) {
                         $('footer .footer-wrapper').show();
@@ -459,25 +442,19 @@ if (empty($wo['description'])) {
       function RunLiveAgora(channelName,DIV_ID) {
   var agoraAppId = '<?php echo($wo['config']['agora_app_id']) ?>';
   var token = null;
-
   var client = AgoraRTC.createClient({mode: 'live', codec: 'vp8'});
   client.init(agoraAppId, function () {
-
-
       client.setClientRole('audience', function() {
     }, function(e) {
     });
-
     client.join(token, channelName, 0, function(uid) {
     }, function(err) {
     });
     }, function (err) {
     });
-
     client.on('stream-added', function (evt) {
     var stream = evt.stream;
     var streamId = stream.getId();
-
     client.subscribe(stream, function (err) {
     });
   });
@@ -489,14 +466,11 @@ if (empty($wo['description'])) {
 }
       </script>
       <?php echo (!empty($wo['config']['googleAnalytics'])) ? $wo['config']['googleAnalytics'] : ''; ?>
-
     <?php echo Wo_LoadPage('style') ?>
-
     <?php if ($wo['page'] == 'welcome') { ?>
       <style>.login_left_combo{color:<?php echo $wo['config']['btn_color'];?>}body{background: <?php echo $wo['config']['btn_background_color'];?> !important;}   .wo_regi_features:before{content: '';display: block;background-image: url(<?php echo $wo['config']['theme_url'];?>/img/backgrounds/login.<?php echo $wo['config']['background_extension'];?>);background-repeat: no-repeat;background-size: cover;background-position:center;position: absolute;top: 0;left: 0;right: 0;bottom: 0;opacity: 0.35;}
     </style>
       <?php }?>
-
     <?php if ($_COOKIE['mode'] == 'night') { ?>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/dark.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>" id="night-mode-css">
     <?php } ?>
@@ -512,7 +486,6 @@ if (empty($wo['description'])) {
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <?php } ?>
     <script crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
     <script src="<?php echo $wo['config']['theme_url'];?>/javascript/socket.io.js"></script>
       <script>
       let socket = null
@@ -549,7 +522,6 @@ if (empty($wo['description'])) {
               }, 2000);
           });
          }, 3000);
-
         socket.on("reconnect", ()=>{
           let recipient_ids = []
           let recipient_group_ids = []
@@ -645,9 +617,7 @@ if (empty($wo['description'])) {
              $("[data_messsages_count]").attr('data_messsages_count', current_messages_number);
              document.title = 'New Message | ' + document_title;
           }
-
         })
-
         socket.on("group_message", (data)=>{
               var chat_messages_wrapper = $('.group-messages-wrapper-'+data.id);
               if (data.status == 200) {
@@ -656,19 +626,15 @@ if (empty($wo['description'])) {
               }else{
                 $(".group-messages-wrapper-"+data.id).find('.chat-messages').append(data.html);
               }
-
               chat_messages_wrapper.scrollTop(chat_messages_wrapper[0].scrollHeight);
             }
           })
-
         <?php
         }
         ?>
       });
       </script>
-
    </head>
-
    <body <?php if ($wo['config']['chatSystem'] == 0) { ?> chat-off="true" <?php } ?>>
     <?php $loadPage = Wo_LoadPage('thirdparty/theme-changer'); echo (!empty($loadPage)) ? $loadPage : '';?>
     <div id="focus-overlay"></div>
@@ -735,34 +701,21 @@ if (empty($wo['description'])) {
       </div>
       <!-- Load modal alerts -->
     <?php echo Wo_LoadPage('modals/site-alerts'); ?>
-
-    <!-- <div id="node-js-templates">
-      <?php /*if ($wo['config']['node_socket_flow'] == "1"){
-        echo Wo_LoadPage('chat/chat-list');
-      }*/
-      ?>
-    <div> -->
-
     <?php if (($wo['page'] == 'home' || $wo['page'] == 'timeline' || $wo['page'] == 'products') && $wo['config']['classified'] == 1) { ?>
     <?php echo Wo_LoadPage('products/create'); ?>
     <?php } ?>
-
     <?php if (($wo['page'] == 'ads')) { ?>
     <?php //echo Wo_LoadPage('ads/send_money'); ?>
     <?php } ?>
-
     <?php if ($wo['loggedin'] == true) {?>
     <div class="lb-preloader"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></div>
-
     <?php echo Wo_LoadPage('modals/keyboard-shortcuts'); ?>
     <?php } ?>
-
       <!-- JS FILES -->
       <?php if ($wo['config']['reCaptcha'] == 1) { ?>
       <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
       <?php } ?>
       <?php if ($wo['loggedin'] == false) { ?>
-
       <script type="text/javascript" src="<?php echo $wo['config']['theme_url'];?>/javascript/welcome.js<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>"></script>
       <?php } ?>
       <?php
@@ -801,10 +754,8 @@ if (empty($wo['description'])) {
       <script>$(document).ready(function() {$('div.leftcol').theiaStickySidebar({additionalMarginTop: 65});});</script>
       <script type="text/javascript">jQuery(document).ready(function() {jQuery('.custom-fixed-element').theiaStickySidebar({additionalMarginTop: 65});});</script>
       <?php }?>
-
       <!-- End 'JS FILES' -->
       <?php echo Wo_LoadPage('timeago/content'); ?>
-
       <?php if($wo['loggedin'] == true) { echo Wo_LoadPage('extra_js/content'); }?>
       <!-- Audio FILES -->
       <?php if ($wo['loggedin'] == true) { ?>
@@ -821,7 +772,6 @@ if (empty($wo['description'])) {
          <source src="<?php echo $wo['config']['theme_url']; ?>/mp3/video_call.mp3" type="audio/mpeg">
       </audio>
       <?php } ?>
-
       <!-- End 'Audio FILES' -->
       <script>
         $(window).on("popstate", function (e) {
@@ -871,14 +821,12 @@ if (empty($wo['description'])) {
       <?php if ($wo['page'] == 'welcome') {?>
     <style>.cc-bottom{bottom: 2.5em;}</style>
       <?php } ?>
-
-		<?php if ($wo['config']['user_status'] == 1) { ?>
+    <?php if ($wo['config']['user_status'] == 1) { ?>
       <!-- // NEW STORY -->
       <script type="text/javascript">
           $(document).on('click', '.story-image-wrapper', function(event) {
           event.preventDefault();
           $('#contnet').append('<div class="lightbox-container"><div class="lightbox-backgrond" onclick="Wo_CloseLightbox();"></div><div class="lb-preloader" style="display:block"><svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></div></div>');
-
           $value = $(this).parents(".story-container").attr('data-status-id');
           $.post(Wo_Ajax_Requests_File() + '?f=story_view', {id: $value}, function(data, textStatus, xhr) {
             if (data.status == 200) {
@@ -899,7 +847,6 @@ if (empty($wo['description'])) {
             }
           });
         });
-
         function Wo_GetMoreStoryViews(story_id,self) {
           last_view = $('.story_views_').last().attr('id');
           $(self).addClass('dont_close_story_'+story_id);
@@ -907,12 +854,10 @@ if (empty($wo['description'])) {
           $.post(Wo_Ajax_Requests_File() + '?f=story_views_', {last_view:last_view,story_id:story_id}, function(data, textStatus, xhr) {
             if (data.status == 200) {
               $(self).find('button').html('<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather"><polyline points="6 9 12 15 18 9"></polyline></svg> <?php echo($wo['lang']['load_more']) ?>');
-
               $('.views_container_').append(data.html);
             }
             else{
               $(self).find('button').html('<?php echo $wo["lang"]["no_more_views"]?>');
-
             }
           });
         }
@@ -927,20 +872,17 @@ if (empty($wo['description'])) {
             setTimeout(function(){
               video_story = $('#video_story').attr('data-story-video');
                 if ($('[data-story-video='+video_story+']').length == 0) {
-
                   $('.width_').addClass('load');
                   setTimeout(function(){
                       $('.width_').css('width', '100%');
                   }, 200);
                   Wo_Delay(function(){
                     value = $('.user_story_').attr('id');
-
                       if ($('.dont_close_story_'+value).length == 0) {
                         if (type == 'user') {
                           Get_NextStory(data.story_id);
                         }
                         else{
-
                           Get_NextStory(data.story_id,'friends');
                         }
                       }
@@ -951,7 +893,6 @@ if (empty($wo['description'])) {
         });
         function Get_PreviousStory(story_id,story_type = '') {
           if ($('.lightbox-container').is(":visible")) {
-
             Wo_CloseLightbox();
             $('#contnet').append('<div class="lightbox-container"><div class="lightbox-backgrond" onclick="Wo_CloseLightbox();"></div><div class="lb-preloader" style="display:block"><svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></div></div>');
             $.post(Wo_Ajax_Requests_File() + '?f=view_story_by_id', {story_id: story_id,type:'previous',story_type:story_type}, function(data, textStatus, xhr) {
@@ -989,7 +930,6 @@ if (empty($wo['description'])) {
         }
         function Get_NextStory(story_id,story_type = '') {
           if ($('.lightbox-container').is(":visible")) {
-
             Wo_CloseLightbox();
             $('#contnet').append('<div class="lightbox-container"><div class="lightbox-backgrond" onclick="Wo_CloseLightbox();"></div><div class="lb-preloader" style="display:block"><svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></div></div>');
             $.post(Wo_Ajax_Requests_File() + '?f=view_story_by_id', {story_id: story_id,type:'next',story_type:story_type}, function(data, textStatus, xhr) {
@@ -1024,7 +964,6 @@ if (empty($wo['description'])) {
                   if($('.unseen_story').length > 0){
                     $('.unseen_story').addClass('seen_story');
                     $('.unseen_story').removeClass('unseen_story');
-
                   }
                 }
                 Wo_CloseLightbox();
@@ -1034,8 +973,7 @@ if (empty($wo['description'])) {
       }
     </script>
       <!-- // NEW STORY -->
-
-	  <?php } ?>
+    <?php } ?>
     <?php
     if ($wo['loggedin'] == true) {
     $wo['user']['notification_settings'] = (Array) json_decode(html_entity_decode($wo['user']['notification_settings']));
